@@ -1,0 +1,15 @@
+{
+    "src_dir"                :   "/data/brooksma/scRNA-seq/06_200310/cellranger_out/intron_exon_sam/src",
+    "bam_dir"                :   "/data/brooksma/scRNA-seq/06_200310/cellranger_out",
+    "out_dir"                :   "/data/brooksma/scRNA-seq/06_200310/cellranger_out/intron_exon_sam/output3",
+    "sample_file"            :   "samples.txt",
+    "barcode_suffix"         :   "_rod_barcode_06-200310.txt",
+    "script_R"               :   "processFile.R",
+    "samtools"               :   "1.17",
+    "R_ver"                  :   "4.3",
+    "split_num"              :   50,
+    "job_all"                :   "--time=24:00:00 --mem=4G  --cpus-per-task=2 --gres=lscratch:100",
+    "job_bam"                :   "--time=1:00:00 --mem=12G  --cpus-per-task=12 --gres=lscratch:100",
+    "job_sam"                :   "--time=1:00:00 --mem=4G  --cpus-per-task=2 --gres=lscratch:100",
+    "job_R"                  :   "--time=8:00:00 --mem=4G  --cpus-per-task=2 --gres=lscratch:100"
+}
