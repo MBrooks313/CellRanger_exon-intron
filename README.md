@@ -1,5 +1,5 @@
 # CellRanger_exon-intron_counts
-This snakemake subsets a CellRanger output BAM file for cells of interest then summarizes the exon and intron aligned read counts per cell barcode.
+This snakemake subsets a CellRanger output BAM file for cells of interest and then summarizes the exon and intron aligned read counts per cell barcode.
 
 ## General workflow
 	+ Parse the bam file for exon and intron reads for barcodes of interest.
@@ -20,7 +20,7 @@ This snakemake subsets a CellRanger output BAM file for cells of interest then s
 
 
 ## Output is multiple summary exon and intron count files per sample. 
-	+ Further summarization is to be perfomed in R. 
-	+ I will poissibly update the snakemake to do this at some point.
+	+ Further summarization is to be performed in R. 
+	+ I will possibly update the snakemake to do this at some point.
 
 
