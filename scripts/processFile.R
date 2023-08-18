@@ -1,5 +1,6 @@
 
 library(argparse)
+library(tidyverse)
 
 # Arg parser for the command line input
 parser <- ArgumentParser(description= 'Parse this arg!')
@@ -18,12 +19,18 @@ processFile = function(filepath, outfile){
     if ( length(oneLine) == 0 ) {
       break
     }
-    tmp_bar <- gsub(".+(CB:Z:.+-1).+", "\\1", oneLine)
+    # Get barcode
+    tmp_bar <- str_extract(pattern="CB:Z:.+-1", string=oneLine)
     tmp_bar <- gsub(".+:", "", tmp_bar)
-    tmp_type <- gsub(".+(RE:A:[NE]).+", "\\1", oneLine)
+    # Get gene
+    tmp_gene <- str_extract(pattern="GN:Z:[[:alpha:][:digit:]]+", string=oneLine)
+    tmp_gene <- gsub(".+:", "", tmp_gene)
+    # Get read type
+    tmp_type <- str_extract(pattern="RE:A:[NE]", string=oneLine)
     tmp_type <- ifelse(tmp_type == "RE:A:E", "exon", "intron")
-    tmp_bar_type <- paste(tmp_bar, tmp_type, sep = ",")
-    write(tmp_bar_type, file = outfile, append=TRUE, sep = ",")
+
+    bar_gene_type <- paste(tmp_bar, tmp_gene, tmp_type, sep = ",")
+    write(bar_gene_type, file = outfile, append=TRUE, sep = ",")
   }
   close(con)
 }
